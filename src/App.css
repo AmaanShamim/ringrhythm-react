@@ -5,8 +5,12 @@
   margin: 0px;
 }
 
-body{
+/* body{
   user-select: none;
+} */
+
+.controls {
+  display: flex;
 }
 
 .grid-container {

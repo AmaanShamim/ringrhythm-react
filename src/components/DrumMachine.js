@@ -1,7 +1,11 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Drumpad from "./Drumpad";
 
 export default function DrumMachine() {
+
+    const [volume, setVolume] = useState(0.5);
+    const [display, setdisplay] = useState("")
+
     const notes = useMemo(() =>[
     {
       keyCode: 81,
@@ -67,7 +71,9 @@ export default function DrumMachine() {
         const audio = document.getElementById(note.keyTrigger);
         if (audio) {
           audio.currentTime = 0;
+          audio.volume = volume;
           audio.play();
+          setdisplay(note.id)
         }
       }
     }
@@ -75,22 +81,44 @@ export default function DrumMachine() {
     return () => {
       document.removeEventListener("keydown", handleKeyPress);
     };
-  }, [notes]);
+  }, [notes, volume]);
+
+  const handleVolumeChange = (event) => {
+    const newVolume = event.target.value;
+    setVolume(newVolume);
+  };
+
+  const updateDisplay = (value)=>{
+    setdisplay(value);
+  }
 
   return (
     <div id="drum-machine">
       <div className="controls">
-         
+         <button>on/off</button>
+         <div id="display">{display}</div>
+         <div>
+          <input
+            type="range"
+            min="0"
+            max="1"
+            step="0.01"
+            value={volume}
+            onChange={handleVolumeChange}
+          />
+        </div>
       </div>
       <div className="grid-container">
         {notes.map((elem, index) => {
           return (
             <Drumpad
+              updateDisplay={updateDisplay}
               keyCode={elem.keyCode}
               keyTrigger={elem.keyTrigger}
               id={elem.id}
               url={elem.url}
               key={index}
+              volume={volume}
             />
           );
         })}
