@@ -88,26 +88,39 @@ export default function DrumMachine() {
   }, [notes, volume, power]);
 
   const handleVolumeChange = (event) => {
+    if (!power) return;
     const newVolume = event.target.value;
     setVolume(newVolume);
+    setdisplay("Volume: " + (volume * 100));
   };
 
   const handlePowerToggle = () => {
     setpower(!power);
-    setdisplay(power === "on" ? "" : "Power Off");
+    setdisplay(!power ? "" : "Power Off");
   };
 
   const updateDisplay = (value) => {
     setdisplay(value);
   };
 
+  const styleBefore = {
+    color: "#fff",
+    padding: "20px",
+    backgroundColor: "#000000",
+    textAlign: "center",
+    borderRadius: "8px",
+  }
+
   return (
     <div className="container">
       <div id="drum-machine">
         <div className="controls">
-          <button onClick={handlePowerToggle}>
-            {power ? "Power On" : "Power Off"}
-          </button>
+          <div className="power-button" onClick={handlePowerToggle}>
+            <i style={{
+                color: power?"white":"grey",
+                lineHeight: "32px"
+            }} className="fa-solid fa-power-off fa-lg"></i>
+          </div>
           <div id="display">{display}</div>
           <div>
             <input
@@ -137,6 +150,7 @@ export default function DrumMachine() {
           })}
         </div>
       </div>
+      <span id="tribute">coded & designed by Amaan Shamim Khan</span>
     </div>
   );
 }
