@@ -5,12 +5,26 @@
   margin: 0px;
 }
 
-/* body{
+body{
   user-select: none;
-} */
+  background-image: url('../src/images/bgimg.jpg');
+}
+
+.container{
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .controls {
   display: flex;
+  justify-content: space-around;
+}
+
+.controls #display {
+  width: 100px;
+  text-align: center;
 }
 
 .grid-container {

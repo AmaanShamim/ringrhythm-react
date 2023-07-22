@@ -2,6 +2,7 @@ import React from "react";
 
 export default function Drumpad(props) {
   function playAudio() {
+    if (!props.power) return;
     var audio = document.getElementById(props.keyTrigger);
     audio.volume = props.volume;
     audio.src = props.url;
