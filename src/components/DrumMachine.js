@@ -1,11 +1,10 @@
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useMemo, useState } from "react";
 import Drumpad from "./Drumpad";
 
 export default function DrumMachine() {
-  const [volume, setVolume] = useState(0.5);
   const [display, setdisplay] = useState("");
   const [power, setpower] = useState(true);
-
+  const [volume, setvolume] = useState(0.5);
   const notes = useMemo(
     () => [
       {
@@ -65,51 +64,16 @@ export default function DrumMachine() {
     ],
     []
   );
-
-  useEffect(() => {
-    function handleKeyPress(event) {
-      if (!power) return;
-      const keyCode = event.keyCode;
-      const note = notes.find((note) => note.keyCode === keyCode);
-      if (note) {
-        const audio = document.getElementById(note.keyTrigger);
-        if (audio) {
-          audio.currentTime = 0;
-          audio.volume = volume;
-          audio.play();
-          setdisplay(note.id);
-        }
-      }
-    }
-    document.addEventListener("keydown", handleKeyPress);
-    return () => {
-      document.removeEventListener("keydown", handleKeyPress);
-    };
-  }, [notes, volume, power]);
-
-  const handleVolumeChange = (event) => {
-    if (!power) return;
-    const newVolume = event.target.value;
-    setVolume(newVolume);
-    setdisplay("Volume: " + (volume * 100));
-  };
-
   const handlePowerToggle = () => {
     setpower(!power);
     setdisplay(!power ? "" : "Power Off");
   };
-
-  const updateDisplay = (value) => {
-    setdisplay(value);
+  const handleVolumeChange = (event) => {
+    if (!power) return;
+    const newVolume = event.target.value;
+    setvolume(newVolume);
+    setdisplay("Volume: " + volume * 100);
   };
-
-  const styleBefore = {
-    color: "#fff",
-    padding: "20px",
-    backgroundColor: "#000000",
-    textAlign: "center",
-    borderRadius: "8px",
-  }
 
   return (
     <div className="container">
@@ -127,7 +91,7 @@ export default function DrumMachine() {
               type="range"
               min="0"
               max="1"
-              step="0.01"
+              step="0.1"
               value={volume}
               onChange={handleVolumeChange}
             />
@@ -137,14 +101,16 @@ export default function DrumMachine() {
           {notes.map((elem, index) => {
             return (
               <Drumpad
-                updateDisplay={updateDisplay}
                 keyCode={elem.keyCode}
                 keyTrigger={elem.keyTrigger}
                 id={elem.id}
                 url={elem.url}
                 key={index}
+                display={display}
                 power={power}
+                notes={notes}
                 volume={volume}
+                setdisplay={setdisplay}
               />
             );
           })}
