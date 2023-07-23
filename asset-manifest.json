@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.css": "/ringrhythm-react/static/css/main.413c8255.css",
+    "main.js": "/ringrhythm-react/static/js/main.51ff669c.js",
+    "static/js/787.b4bb2af3.chunk.js": "/ringrhythm-react/static/js/787.b4bb2af3.chunk.js",
+    "static/media/bgimg.jpg": "/ringrhythm-react/static/media/bgimg.795138a6e465bc76aa4c.jpg",
+    "static/media/Satisfy-Regular.ttf": "/ringrhythm-react/static/media/Satisfy-Regular.32a6713537cf5e1e82f2.ttf",
+    "index.html": "/ringrhythm-react/index.html",
+    "main.413c8255.css.map": "/ringrhythm-react/static/css/main.413c8255.css.map",
+    "main.51ff669c.js.map": "/ringrhythm-react/static/js/main.51ff669c.js.map",
+    "787.b4bb2af3.chunk.js.map": "/ringrhythm-react/static/js/787.b4bb2af3.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.413c8255.css",
+    "static/js/main.51ff669c.js"
+  ]
+}
