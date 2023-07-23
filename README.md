@@ -1,6 +1,6 @@
-# Drum Pad App
+# RING RHYTHM
 
-The Drum Pad App is a simple React-based web application that allows users to play drum sounds by either clicking on virtual drum pads or using corresponding keyboard keys.
+The Ring-Rhythm App is an engaging web application built with React that lets users unleash their musical creativity by playing drum sounds using a virtual drum pad. With a user-friendly interface, users can either click on the virtual drum pads or use their computer keyboard to trigger different drum sounds. The app offers a power on/off feature, giving users the freedom to control the drum pad interaction as they wish. The real-time display showcases the currently played drum pad's ID, adding to the immersive experience. Whether it's for casual fun or musical experimentation, the Drum Pad App provides an enjoyable and interactive way to explore various drum beats and rhythms.
 
 ## Table of Contents
 
